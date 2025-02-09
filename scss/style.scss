@@ -17,6 +17,11 @@ $light_dark_color: #C9C5C9;
     padding: 0;
 }
 
+body{
+    background-image: url(/img/bg.png);
+    background-color: #cccccc;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -115,3 +120,23 @@ header {
         }
     }
 }
+
+.hackathons-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+

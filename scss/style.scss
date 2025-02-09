@@ -147,6 +147,7 @@ header {
         box-shadow: inset 0px -4px 6.4px 0px rgba(0,0,0,0.6);
         -ms-overflow-style: none;  /* IE и Edge */
         scrollbar-width: none;  /* Firefox */
+        overflow-x: hidden;
 
         ::-webkit-scrollbar {
             display: none;

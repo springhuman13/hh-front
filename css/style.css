@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: clamp(60px, 8vw, 90px); /* Минимум 60px, максимум 90px, зависит от ширины экрана */
+  background-color: #FFFBFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 0 clamp(20px, 5vw, 50px); /* Адаптивные отступы */
+}
+header .logo {
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 36px);
+  color: #E1711D;
+  /* Размер текста адаптивный */
+  letter-spacing: -1.73px;
+}
+header .logo span {
+  color: #48464A;
+}
+header .menu {
+  height: 100%; /* Меню занимает всю высоту header */
+  display: flex;
+  align-items: center;
+  gap: clamp(30px, 5vw, 65px); /* Промежутки адаптивные */
+}
+header .menu .active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+header .menu .active a {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(18px, 3vw, 28px);
+  color: #48464A;
+  text-decoration: none;
+  padding-top: 28px;
+}
+header .menu .active div {
+  width: 100%;
+  height: 5px;
+  background-color: #E1711D;
+}
+header .menu .inactive a {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(18px, 3vw, 28px);
+  color: #C9C5C9;
+  text-decoration: none;
+}
+header .circles {
+  display: flex;
+  gap: clamp(20px, 5vw, 40px);
+}
+header .circles .notification {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(40px, 7vw, 70px); /* Адаптивная ширина */
+  height: clamp(40px, 7vw, 70px); /* Адаптивная высота */
+  background-color: #C9C5C9;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+header .circles .notification .icon {
+  width: clamp(20px, 5vw, 40px);
+  height: clamp(20px, 5vw, 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .circles .notification .count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(10px, 2vw, 14px);
+  color: #FFFBFF;
+  position: absolute;
+  width: clamp(15px, 3vw, 30px);
+  height: clamp(15px, 3vw, 30px);
+  top: -5px;
+  right: -5px;
+  background-color: #E1711D;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+header .circles .profile img {
+  cursor: pointer;
+  width: clamp(40px, 7vw, 70px);
+  height: clamp(40px, 7vw, 70px);
+  border-radius: 50%;
+}

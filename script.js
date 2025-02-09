@@ -11,6 +11,7 @@
             const card = document.createElement("div");
             card.className = "card";
             card.innerHTML = `
+                <img src=img/bg.png>
                 <h2>${hackathon.title}</h2>
                 <p>${hackathon.description}</p>
                 <p>${hackathon.link}</p>

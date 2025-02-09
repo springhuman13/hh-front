@@ -110,21 +110,46 @@ header .circles .profile img {
   border-radius: 50%;
 }
 
-.hackathons-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.content {
+  display: flex;
+  padding: 25px;
+  gap: 25px;
+  height: 550px;
+}
+.content .left-menu {
+  background: #FFFBFF;
+  width: 370px;
+  border-radius: 20px;
+}
+.content .hackathons-container {
+  background-color: #48464A;
+  width: 1440px;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: inset 0px -4px 6.4px 0px rgba(0, 0, 0, 0.6);
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
 }
-
-.card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: transform 0.2s;
+.content .hackathons-container ::-webkit-scrollbar {
+  display: none;
 }
-
-.card:hover {
-  transform: scale(1.05);
+.content .hackathons-container .card {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(6px, 2vw, 10px);
+  color: #48464A;
+  background: #FFFBFF;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 260px;
+  height: 360px;
+}
+.content .hackathons-container .card img {
+  border-radius: 20px 20px 0 0;
+  width: 100%;
 }

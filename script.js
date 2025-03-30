@@ -6,15 +6,23 @@
 
     function renderHackathons(hackathons) {
         const container = document.querySelector(".hackathons-container");
-        container.innerHTML = ""; // Очистить контейнер
+        container.innerHTML = "";
         hackathons.forEach((hackathon) => {
             const card = document.createElement("div");
             card.className = "card";
             card.innerHTML = `
-                <img src=img/bg.png>
-                <h2>${hackathon.title}</h2>
-                <p>${hackathon.description}</p>
-                <p>${hackathon.link}</p>
+                <a href=${hackathon.link}><img src=${hackathon.img}></a>
+                <div class=card-text>
+                    <a href=${hackathon.link}><h2>${hackathon.title}</h2></a>
+                    <p>${hackathon.place}</p>
+                    <p><strong>Дата: </strong>${hackathon.dates}</p>
+                    <p><strong>Организатор: </strong>${hackathon.organizers}</p>
+                    <p><strong>Технологический фокус: </strong>${hackathon.tech_focus}</p>
+                </div>
+                <a href="#" class="btn-find-team">
+                    <img src="img/find_team.svg" alt="Иконка команды">
+                    Найти команду
+                </a>
             `;
             container.appendChild(card);
         });

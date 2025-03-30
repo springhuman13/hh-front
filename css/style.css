@@ -112,14 +112,94 @@ header .circles .profile img {
 
 .content {
   display: flex;
+  flex-direction: row;
   padding: 25px;
   gap: 25px;
   height: 550px;
 }
 .content .left-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 360px;
+}
+.content .left-menu .search-hackathon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
   background: #FFFBFF;
-  width: 370px;
+  border-radius: 15px;
+}
+.content .left-menu .search-hackathon form {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.content .left-menu .search-hackathon input[type=text] {
+  height: 28px;
+  font-size: 17px;
+  border: none;
+  background-color: #FFFBFF;
+}
+.content .left-menu .search-hackathon input[type=text]:focus {
+  outline: none;
+  border: none;
+}
+.content .left-menu .search-hackathon button {
+  border: none;
+  background-color: #FFFBFF;
+  cursor: pointer;
+}
+.content .left-menu .search-hackathon img {
+  width: 20px;
+  height: 20px;
+}
+.content .left-menu .filter-section {
+  height: 500px;
+  background: #FFFBFF;
   border-radius: 20px;
+}
+.content .left-menu .filter-section .filter-content {
+  max-height: 150px;
+  overflow-y: auto;
+}
+.content .left-menu .filter-section .filter-group {
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.content .left-menu .filter-section .filter-group:first-child label {
+  font-family: "Inter", serif;
+  font-weight: 800;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #48464A;
+}
+.content .left-menu .filter-section .filter-group label {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(10px, 2vw, 14px);
+  color: #48464A;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.content .left-menu .filter-section .filter-group input[type=checkbox] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  accent-color: #E1711D;
+  cursor: pointer;
+}
+.content .left-menu .filter-section .filter-title {
+  font-family: "Inter", serif;
+  font-weight: 800;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #48464A;
+  margin-bottom: 5px;
+}
+.content .left-menu .filter-section .disabled {
+  color: #C9C5C9;
 }
 .content .hackathons-container {
   background-color: #48464A;
@@ -147,10 +227,44 @@ header .circles .profile img {
   background: #FFFBFF;
   border-radius: 20px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 260px;
-  height: 360px;
+  width: 360px;
+  height: 460px;
 }
 .content .hackathons-container .card img {
   border-radius: 20px 20px 0 0;
   width: 100%;
+  height: 200px;
+}
+.content .hackathons-container .card .card-text {
+  margin: 5px;
+  height: 170px;
+}
+.content .hackathons-container .card a {
+  text-decoration: none;
+  color: #E1711D;
+}
+.content .hackathons-container .card p {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(8px, 2vw, 12px);
+  color: #48464A;
+  padding-bottom: 7px;
+}
+.content .hackathons-container .card .btn-find-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E1711D;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 20px auto;
+}
+.content .hackathons-container .card .btn-find-team img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
 }

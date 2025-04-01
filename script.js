@@ -19,7 +19,7 @@
                     <p><strong>Организатор: </strong>${hackathon.organizers}</p>
                     <p><strong>Технологический фокус: </strong>${hackathon.tech_focus}</p>
                 </div>
-                <a href="#" class="btn-find-team">
+                <a href="teams.html" class="btn-find-team">
                     <img src="img/find_team.svg" alt="Иконка команды">
                     Найти команду
                 </a>

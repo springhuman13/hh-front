@@ -32,7 +32,72 @@
     <div class="content">
         <div class="left-menu">
             
-            <button class="btn-create-team"><img src="img/create_team.svg">Создать команду</button>
+            <button onclick="openForm()" class="btn-create-team"><img src="img/create_team.svg">Создать команду</button>
+
+            <div id="form-create-team" class="form-create-team">
+                <h2>Создать команду</h2>
+                <input type="text" id="name" name="name" placeholder="Название...">
+                <select id="form-hackathon" name="form-hackathon">
+                    <option value="1">Яндекс</option>
+                    <option value="2">МТС</option>
+                    <option value="3">1Старт</option>
+                </select>
+                <select id="form-city" name="form-city">
+                    <option value="1">Онлайн</option>
+                    <option value="2">Москва</option>
+                    <option value="3">Санкт-Петербург</option>
+                </select>
+                <textarea placeholder="Описание"></textarea>
+                <div class="form-team-members">
+                    <div class="form-member">
+                        <label for="form-team-members1">Роль 1</label>
+                        <select id="form-team-members1" name="form-team-members">
+                            <option value="1">Back-end</option>
+                            <option value="2">Front-end</option>
+                            <option value="3">Designer</option>
+                        </select>
+                        <button>Навыки</button>
+                    </div>
+                    <div class="form-member">
+                        <label for="form-team-members2">Роль 2</label>
+                        <select id="form-team-members2" name="form-team-members">
+                            <option value="1">Back-end</option>
+                            <option value="2">Front-end</option>
+                            <option value="3">Designer</option>
+                        </select>
+                        <button>Навыки</button>
+                    </div>
+                    <div class="form-member">
+                        <label for="form-team-members3">Роль 3</label>
+                        <select id="form-team-members3" name="form-team-members">
+                            <option value="1">Back-end</option>
+                            <option value="2">Front-end</option>
+                            <option value="3">Designer</option>
+                        </select>
+                        <button>Навыки</button>
+                    </div>
+                    <div class="form-member">
+                        <label for="form-team-members4">Роль 4</label>
+                        <select id="form-team-members4" name="form-team-members">
+                            <option value="1">Back-end</option>
+                            <option value="2">Front-end</option>
+                            <option value="3">Designer</option>
+                        </select>
+                        <button>Навыки</button>
+                    </div>
+                    <div class="form-member">
+                        <label for="form-team-members5">Роль 5</label>
+                        <select id="form-team-members5" name="form-team-members">
+                            <option value="1">Back-end</option>
+                            <option value="2">Front-end</option>
+                            <option value="3">Designer</option>
+                        </select>
+                        <button>Навыки</button>
+                    </div>
+                </div>
+                <button type="submit">Создать</button>
+            </div>
+
             <div class="search-hackathon">
                 <form>
                     <input type="text" placeholder="Поиск по названию" name="search">
@@ -202,5 +267,6 @@
         </div>
 
     </div>
+    <script src="script.js"></script> 
 </body>
 </html>

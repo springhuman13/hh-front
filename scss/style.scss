@@ -17,7 +17,7 @@ $light_dark_color: #C9C5C9;
     padding: 0;
 }
 
-body{
+body {
     background-image: url(/img/bg.png);
 }
 
@@ -25,13 +25,16 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: clamp(60px, 8vw, 90px); /* Минимум 60px, максимум 90px, зависит от ширины экрана */
+    height: clamp(60px, 8vw, 90px);
+    /* Минимум 60px, максимум 90px, зависит от ширины экрана */
     background-color: $light_color;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    padding: 0 clamp(20px, 5vw, 50px); /* Адаптивные отступы */
+    padding: 0 clamp(20px, 5vw, 50px);
+    /* Адаптивные отступы */
 
     .logo {
-        @include text(clamp(20px, 3vw, 36px), 700, $main_color); /* Размер текста адаптивный */
+        @include text(clamp(20px, 3vw, 36px), 700, $main_color);
+        /* Размер текста адаптивный */
         letter-spacing: -1.73px;
 
         span {
@@ -40,10 +43,12 @@ header {
     }
 
     .menu {
-        height: 100%; /* Меню занимает всю высоту header */
+        height: 100%;
+        /* Меню занимает всю высоту header */
         display: flex;
         align-items: center;
-        gap: clamp(30px, 5vw, 65px); /* Промежутки адаптивные */
+        gap: clamp(30px, 5vw, 65px);
+        /* Промежутки адаптивные */
 
         .active {
             display: flex;
@@ -80,8 +85,10 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: clamp(40px, 7vw, 70px); /* Адаптивная ширина */
-            height: clamp(40px, 7vw, 70px); /* Адаптивная высота */
+            width: clamp(40px, 7vw, 70px);
+            /* Адаптивная ширина */
+            height: clamp(40px, 7vw, 70px);
+            /* Адаптивная высота */
             background-color: $light_dark_color;
             border: none;
             border-radius: 50%;
@@ -121,7 +128,7 @@ header {
 }
 
 
-.content{
+.content {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -130,30 +137,14 @@ header {
 
     //Хакатоны
 
-    .left-menu{
+    .left-menu {
         display: flex;
         flex-direction: column;
         gap: 10px;
         width: 300px;
         height: 550px;
-        .btn-create-team{
-            @include text(clamp(12px, 2vw, 16px), 500, $light_color);
-            border: none;
-            border-radius: 20px;
-            background-color: $main_color;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 7px 14px;
-            img{
-                width: 20px;
-                height: 20px;
-            }
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        }
-        .search-hackathon{
+
+        .search-hackathon {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -161,69 +152,84 @@ header {
             background: $light_color;
             border-radius: 15px;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            form{
+
+            form {
                 display: flex;
                 flex-direction: row;
                 gap: 5px;
             }
-            input[type=text]{
+
+            input[type=text] {
                 width: 100%;
                 height: 28px;
                 font-size: 17px;
                 border: none;
                 background-color: $light_color;
             }
+
             input[type=text]:focus {
                 outline: none;
                 border: none;
             }
+
             button {
                 border: none;
                 background-color: $light_color;
                 cursor: pointer;
             }
-            img{
+
+            img {
                 width: 20px;
                 height: 20px;
             }
         }
-        .filter-section{
+
+        .filter-section {
             height: 100%;
             background: $light_color;
             border-radius: 20px;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
             .filter-content {
                 max-height: 75px;
                 overflow-y: auto;
             }
-            .filter-group-list{
+
+            .filter-group-list {
                 display: flex;
                 flex-direction: row;
                 @include text(clamp(12px, 2vw, 16px), 800, $dark_color);
-                gap: 8px; 
+                gap: 8px;
             }
-            select{
+
+            select {
                 @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
-                border: none; 
-                &:focus{
+                border: none;
+
+                &:focus {
                     outline: none;
                     border: none;
                 }
             }
-            .filter-group, .filter-group-list {
+
+            .filter-group,
+            .filter-group-list {
                 padding-top: 30px;
                 padding-left: 30px;
                 padding-right: 30px;
             }
-            .filter-group:first-child label{
+
+            .filter-group:first-child label {
                 @include text(clamp(12px, 2vw, 16px), 800, $dark_color);
             }
+
             .filter-group label {
                 @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
                 display: flex;
                 align-items: center;
                 cursor: pointer;
             }
+
             .filter-group input[type=checkbox] {
                 margin-right: 8px;
                 width: 18px;
@@ -231,19 +237,22 @@ header {
                 accent-color: $main_color;
                 cursor: pointer;
             }
+
             .filter-title {
                 @include text(clamp(12px, 2vw, 16px), 800, $dark_color);
                 margin-bottom: 5px;
             }
-            .disabled{
+
+            .disabled {
                 color: $light_dark_color;
             }
         }
-    }    
+    }
 
-    .hackathons-container, .teams-container {
+    .hackathons-container,
+    .teams-container {
         background-color: $dark_color;
-        height:  500px;
+        height: 500px;
         width: 1050px;
         border-radius: 20px;
         padding: 25px;
@@ -253,9 +262,11 @@ header {
         gap: 20px;
         overflow-y: auto;
         position: relative;
-        box-shadow: inset 0px -4px 6.4px 0px rgba(0,0,0,0.6);
-        -ms-overflow-style: none;  /* IE и Edge */
-        scrollbar-width: none;  /* Firefox */
+        box-shadow: inset 0px -4px 6.4px 0px rgba(0, 0, 0, 0.6);
+        -ms-overflow-style: none;
+        /* IE и Edge */
+        scrollbar-width: none;
+        /* Firefox */
         overflow-x: hidden;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
@@ -270,23 +281,28 @@ header {
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
             width: 330px;
             height: 460px;
-            img{
+
+            img {
                 border-radius: 20px 20px 0 0;
                 width: 100%;
                 height: 200px;
             }
-            .card-text{
+
+            .card-text {
                 margin: 10px;
                 height: 170px;
             }
-            a{
+
+            a {
                 text-decoration: none;
                 color: $main_color;
             }
-            p{
+
+            p {
                 @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
                 padding-top: 7px
             }
+
             .btn-find-team {
                 display: flex;
                 align-items: center;
@@ -299,79 +315,450 @@ header {
                 width: fit-content;
                 margin: 20px auto;
             }
+
             .btn-find-team img {
                 width: 24px;
                 height: 24px;
                 margin-right: 8px;
             }
+        }
+    }
+
+
+
+
+
+    //ПРОФИЛЬ
+    .log-in {
+        background-color: $light_color;
+        border-radius: 20px;
+        width: 450px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding: 50px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        p {
+            @include text(clamp(20px, 2vw, 24px), 800, $dark_color);
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+
+        a {
+            @include text(clamp(14px, 2vw, 18px), 600, $light_color);
+            border: none;
+            border-radius: 20px;
+            background-color: #0088cc;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            text-decoration: none;
+        }
+    }
+
+    .profile-info {
+        display: flex;
+        justify-content: space-between;
+        height: 550px;
+        width: 900px;
+        background-color: $light_color;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .rignt-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .rignt-menu-top {
+        display: flex;
+        width: 100%;
+        justify-content: space-between
+    }
+
+    .btn-create-team {
+        @include text(clamp(20px, 2vw, 24px), 500, $light_color);
+        border: none;
+        border-radius: 20px;
+        background-color: $main_color;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 7px 14px;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .my-teams-title {
+        background-color: $dark_color;
+        @include text(clamp(20px, 2vw, 24px), 500, $light_color);
+        text-align: center;
+        padding: 10px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .my-teams {
+        background-color: $dark_color;
+        height: 430px;
+        width: 500px;
+        border-radius: 20px;
+        padding: 25px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: inset 0px -4px 6.4px 0px rgba(0, 0, 0, 0.6);
+        -ms-overflow-style: none;
+        /* IE и Edge */
+        scrollbar-width: none;
+        /* Firefox */
+        overflow-x: hidden;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .profile-info-left {
+        margin: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 400px;
+
+        .profile-name {
+            @include text(clamp(20px, 2vw, 24px), 500, $dark_color);
+        }
+
+        label {
+            padding-right: 5px;
+            @include text(clamp(10px, 2vw, 14px), 800, $dark_color);
+        }
+
+        select {
+            @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
+            border: solid 1px $light_dark_color;
+            border-radius: 20px;
+            padding: 5px 10px;
+
+            &:focus {
+                outline: none;
+                border: solid 1px $light_dark_color;
             }
         }
 
-
-
-
-
-        //ПРОФИЛЬ
-        .log-in{
-            background-color: $light_color;
+        textarea {
+            @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
+            height: 200px;
+            resize: none;
             border-radius: 20px;
-            width: 450px;
-            height: 250px;
+            padding: 10px;
+            border: solid 1px $light_dark_color;
+
+            &:focus {
+                border: solid 1px $light_dark_color;
+                outline: none;
+            }
+        }
+
+    }
+
+    .profile-info-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 25px;
+        width: 300px;
+
+        .profile-img {
+            border-radius: 20px;
+            width: 150px;
+        }
+
+        .profile-git {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 50px;
-            padding: 50px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            p{
-                @include text(clamp(20px, 2vw, 24px), 800, $dark_color);
-            }
 
-            img{
-                width: 25px;
-                height: 25px;
-            }
-
-            a{
-                @include text(clamp(14px, 2vw, 18px), 600, $light_color);
-                border: none;
-                border-radius: 20px;
-                background-color: #0088cc;
-                cursor: pointer;
+            .git-title {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                gap: 10px;
-                padding: 12px 24px;
-                text-decoration: none;
+                gap: 5px;
+
+                p {
+                    @include text(clamp(16px, 2vw, 20px), 500, $dark_color);
+                }
+
+                img {
+                    width: 20px;
+                }
+            }
+
+            .git-content {
+                border-radius: 20px;
+                padding: 10px;
+                border: $light_dark_color solid 1px;
+                background-color: white;
+
+                p {
+                    margin: 5px;
+                    @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
+                }
             }
         }
 
-        .profile-info{
+        .profile-docs {
             display: flex;
-            justify-content: space-between;
-            height: 550px;
-            width: 900px;
-            background-color: $light_color;
+            flex-direction: column;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
+            cursor: pointer;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        .profile-docs form {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .profile-docs form img {
+            width: 20px;
+        }
+
+        ul {
             border-radius: 20px;
+            padding: 10px;
+            border: $light_dark_color solid 1px;
+            background-color: white;
+        }
+
+        p {
+            @include text(clamp(12px, 2vw, 16px), 500, $dark_color);
+        }
+
+        ol {
+            @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
+        }
+    }
+
+
+
+
+    //КОМАНДЫ
+    .teams-card {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 500px;
+        height: 350px;
+        background-color: $light_color;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        .team-name {
+            width: 100%;
+            text-align: center;
+            background-color: $main_color;
+            border-radius: 20px 20px 0 0;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         }
 
-        .rignt-menu{
+        .team-name p {
+            @include text(clamp(20px, 2vw, 24px), 500, $light_color);
+            padding: 15px 30px;
+        }
+
+        .team-info {
+            padding-top: 5px;
+            height: 180px;
+            width: 100%;
+            text-align: justify
+        }
+
+        p {
+            @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
+            padding-top: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: $main_color;
+        }
+    }
+
+    .team-members {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $light_color;
+        border: solid 2px $light_dark_color;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        width: 425px;
+        height: 75px;
+        border-radius: 20px;
+        gap: 20px;
+
+        button {
+            border: none;
+            background-color: $light_color;
+            cursor: pointer;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .btn-create-team {
+        @include text(clamp(12px, 2vw, 16px), 500, $light_color);
+        border: none;
+        border-radius: 20px;
+        background-color: $main_color;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 7px 14px;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .form-create-team {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        background-color: $light_color;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        z-index: 1000;
+        @include text(clamp(12px, 2vw, 16px), 500, $dark_color);
+        text-align: center;
+
+        textarea {
+            @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
+            resize: none;
+            border-radius: 20px;
+            padding: 10px;
+            border: solid 1px $light_dark_color;
+            height: 100px;
+
+            &:focus {
+                border: solid 1px $light_dark_color;
+                outline: none;
+            }
+        }
+
+        input[type=text] {
+            @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
+            border: solid 1px $light_dark_color;
+            background-color: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+
+            &:focus {
+                border: solid 1px $light_dark_color;
+                outline: none;
+            }
+        }
+
+        select {
+            @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
+            border: solid 1px $light_dark_color;
+            border-radius: 20px;
+            padding: 5px 10px;
+            &:focus {
+                outline: none;
+                border: solid 1px $light_dark_color;
+            }
+        }
+
+        .form-team-members{
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             gap: 20px;
         }
 
-        .rignt-menu-top{
+        .form-member{
             display: flex;
-            width: 100%;
-            justify-content: space-between
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
-        .btn-create-team{
-            @include text(clamp(20px, 2vw, 24px), 500, $light_color);
+        .form-member button{
+            @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
+            border: none;
+            border-radius: 20px;
+            background-color: $light_color;
+
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 5px 10px;
+            &:hover{
+                background-color: $light_dark_color;
+            }
+            &:active{
+                background-color: #d7d4d7;
+            }
+        }
+
+        button{
+            @include text(clamp(12px, 2vw, 16px), 500, $light_color);
             border: none;
             border-radius: 20px;
             background-color: $main_color;
@@ -381,148 +768,6 @@ header {
             justify-content: center;
             gap: 10px;
             padding: 7px 14px;
-            img{
-                width: 24px;
-                height: 24px;
-            }
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        }
-
-        .my-teams-title{
-            background-color: $dark_color;
-            @include text(clamp(20px, 2vw, 24px), 500, $light_color);
-            text-align: center;
-            padding: 10px 20px;
-            border-radius: 20px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        }
-
-        .my-teams {
-            background-color: $dark_color;
-            height:  430px;
-            width: 500px;
-            border-radius: 20px;
-            padding: 25px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: inset 0px -4px 6.4px 0px rgba(0,0,0,0.6);
-            -ms-overflow-style: none;  /* IE и Edge */
-            scrollbar-width: none;  /* Firefox */
-            overflow-x: hidden;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        }
-
-        .profile-info-left{
-            margin: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            width: 400px;
-            .profile-name{
-                @include text(clamp(20px, 2vw, 24px), 500, $dark_color);
-            }
-            label{
-                padding-right: 5px;
-                @include text(clamp(10px, 2vw, 14px), 800, $dark_color);
-            }
-            select{
-                @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
-                border: solid 1px $light_dark_color;
-                border-radius: 20px;
-                padding: 5px 10px;
-                &:focus{
-                    outline: none;
-                    border: solid 1px $light_dark_color;
-                }
-            }
-            textarea{
-                @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
-                height: 200px;
-                resize: none;
-                border-radius: 20px;
-                padding: 10px;
-                border: solid 1px $light_dark_color; 
-                &:focus{
-                    border: solid 1px $light_dark_color;
-                    outline: none;
-                }
-            }
-            
-        }
-        .profile-info-right{
-            margin: 25px;
-            img{
-                border-radius: 20px;
-                width: 200px;
-            }
-        }
-
-
-
-
-        //КОМАНДЫ
-        .teams-card{
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            width: 500px;
-            height: 350px;
-            background-color: $light_color;
-            border-radius: 20px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            .team-name{
-                width: 100%;
-                text-align: center;
-                background-color: $main_color;
-                border-radius: 20px 20px 0 0;
-                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            }
-            .team-name p{
-                @include text(clamp(20px, 2vw, 24px), 500, $light_color);
-                padding: 15px 30px;
-            }
-            .team-info{
-                padding-top: 5px;
-                height: 180px;
-                width: 100%;
-                text-align: justify
-            }
-            p{
-                @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
-                padding-top: 5px;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-            a{
-                text-decoration: none;
-                color: $main_color;
-            }
-            .team-members{
-                margin-top: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: $light_color;
-                border: solid 2px $light_dark_color;
-                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-                width: 425px;
-                height: 75px;
-                border-radius: 20px;
-                gap: 20px;
-                button {
-                    border: none;
-                    background-color: $light_color;
-                    cursor: pointer;
-                }
-                img{
-                    width: 50px;
-                    height: 50px;
-                }
-            }
         }
     }
-
+}

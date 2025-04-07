@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="script.js" defer></script>
+    <script src="js/hackathons.js" defer></script>
     <title>Хакатоны</title>
 </head>
 <body>
@@ -32,47 +32,27 @@
         <div class="left-menu">
             <div class="search-hackathon">
                 <form>
-                    <input type="text" placeholder="Поиск по названию" name="search">
-                    <button type="submit"><img src="img/search.svg"></button>
+                    <input type="text" placeholder="Поиск по названию" name="search" id="search-input">
+                    <button onclick="handleSearch(event)"><img src="img/search.svg"></button>
                 </form>
             </div>
             <form class="filter-section">
                 <div class="filter-group">
-                    <label class="online"><input type="checkbox"> Онлайн</label>
+                    <label class="online"><input type="checkbox" name="online" value="true">Онлайн</label>
                 </div>
                 
                 <div class="filter-group">
                     <div class="filter-title">Организатор</div>
-                    <div class="filter-content">
-                        <label><input type="checkbox"> Яндекс</label>
-                        <label><input type="checkbox"> Озон</label>
-                        <label><input type="checkbox"> МТС</label>
-                        <label><input type="checkbox"> МТС</label>
-                        <label><input type="checkbox"> МТС</label>
-                        <label><input type="checkbox"> МТС</label>
-                        <label><input type="checkbox"> МТС</label>
-                        <label><input type="checkbox"> МТС</label>
-                        <label><input type="checkbox"> МТС</label>
+                    <div id="org" class="filter-content">
                     </div>
                 </div>
                 
                 <div class="filter-group">
                     <div class="filter-title">Технологический фокус</div>
-                    <div class="filter-content">
-                        <label><input type="checkbox"> Front-end</label>
-                        <label><input type="checkbox"> ML</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
-                        <label><input type="checkbox"> AI</label>
+                    <div id="tf" class="filter-content">
                     </div>
                 </div>
+                <button class="clear_filter_btn" onclick="resetFilters()">Сбросить</button>
             </form>
         </div>
         <div class="hackathons-container"></div>

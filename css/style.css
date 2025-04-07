@@ -9,6 +9,10 @@ body {
   background-image: url(/img/bg.png);
 }
 
+abbr {
+  text-decoration: none;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -169,8 +173,25 @@ header .circles .profile img {
   border-radius: 20px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+.content .left-menu .filter-section .clear_filter_btn {
+  font-family: "Inter", serif;
+  font-weight: 800;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #48464A;
+  border: none;
+  border-radius: 20px;
+  background-color: #FFFBFF;
+  cursor: pointer;
+  padding: 7px 14px;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 30px;
+}
+.content .left-menu .filter-section .clear_filter_btn:hover {
+  background-color: #C9C5C9;
+}
 .content .left-menu .filter-section .filter-content {
-  max-height: 75px;
+  max-height: 100px;
   overflow-y: auto;
 }
 .content .left-menu .filter-section .filter-group-list {
@@ -195,7 +216,7 @@ header .circles .profile img {
 }
 .content .left-menu .filter-section .filter-group,
 .content .left-menu .filter-section .filter-group-list {
-  padding-top: 30px;
+  padding-top: 15px;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -210,14 +231,17 @@ header .circles .profile img {
   font-weight: 500;
   font-size: clamp(10px, 2vw, 14px);
   color: #48464A;
-  display: flex;
-  align-items: center;
+  display: inline-block;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 .content .left-menu .filter-section .filter-group input[type=checkbox] {
   margin-right: 8px;
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
   accent-color: #E1711D;
   cursor: pointer;
 }
@@ -742,18 +766,26 @@ header .circles .profile img {
 .content .form-create-team .form-member button:active {
   background-color: #d7d4d7;
 }
+.content .form-create-team .form-create-team-buttons {
+  display: flex;
+  justify-content: space-around;
+}
 .content .form-create-team button {
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 7px 14px;
+}
+.content .form-create-team .form-create-team-close-button {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #48464A;
+}
+.content .form-create-team .form-create-team-create-button {
   font-family: "Inter", serif;
   font-weight: 500;
   font-size: clamp(12px, 2vw, 16px);
   color: #FFFBFF;
-  border: none;
-  border-radius: 20px;
   background-color: #E1711D;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 7px 14px;
 }

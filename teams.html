@@ -32,11 +32,11 @@
     <div class="content">
         <div class="left-menu">
             
-            <button onclick="openForm()" class="btn-create-team"><img src="img/create_team.svg">Создать команду</button>
+            <button onclick="openTeamForm()" class="btn-create-team"><img src="img/create_team.svg">Создать команду</button>
 
             <div id="form-create-team" class="form-create-team">
                 <h2>Создать команду</h2>
-                <input type="text" id="name" name="name" placeholder="Название...">
+                <input type="text" id="name" name="name" placeholder="Название">
                 <select id="form-hackathon" name="form-hackathon">
                     <option value="1">Яндекс</option>
                     <option value="2">МТС</option>
@@ -95,7 +95,10 @@
                         <button>Навыки</button>
                     </div>
                 </div>
-                <button type="submit">Создать</button>
+                <div class="form-create-team-buttons">
+                    <button class="form-create-team-create-button" type="submit">Создать</button>
+                    <button class="form-create-team-close-button" onclick="closeTeamForm()">Отмена</button>
+                </div>
             </div>
 
             <div class="search-hackathon">

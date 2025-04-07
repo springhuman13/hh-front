@@ -1,15 +1,3 @@
-
-function openTeamForm() {
-    var form = document.getElementById('form-create-team');
-    form.style.display = 'flex';
-}
-
-function closeTeamForm() {
-    var form = document.getElementById('form-create-team');
-    form.style.display = 'none';
-}
-
-
 async function fetchHackathons() {
     const response = await fetch("http://127.0.0.1:8000/hackathons/hackathons/");
     const hackathons = await response.json();
@@ -156,7 +144,8 @@ document.querySelector('.filter-section').addEventListener('change', (event) => 
     }
 });
 
-function resetFilters() {
+function resetFilters(event) {
+    event.preventDefault();
     document.querySelectorAll('.filter-content input, .online input').forEach(cb => {
         cb.checked = false;
     });

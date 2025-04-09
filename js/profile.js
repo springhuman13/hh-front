@@ -1,8 +1,31 @@
 //  ##ROLES##
 
+async function fetchRoles() {
+    const response = await fetch(`${API_URL}/roles/get_all/`);
+    const roles = await response.json();
+    renderRoles(roles);
+}
 
+function renderRoles(roles){
+    const container = document.getElementById("roles-select");
+    container.innerHTML = "";
+    roles.forEach((roles) => {
+        
+        const {
+            id = 0,
+            name = "Без названия",
+        } = roles;
 
+        const option = document.createElement("option");
+        
+        label.innerHTML = `
+                <option value="${id}">${name}</option>
+            `;
+        container.appendChild(option);
+    });
+}
 
+document.addEventListener("DOMContentLoaded", fetchRoles);
 //  ##INTERSTING##
 
 

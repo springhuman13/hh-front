@@ -1,17 +1,17 @@
 async function fetchHackathons() {
-    const response = await fetch("http://127.0.0.1:8000/hackathons/hackathons/");
+    const response = await fetch(`${API_URL}/hackathons/hackathons/`);
     const hackathons = await response.json();
     renderHackathons(hackathons);
 }
 
 async function fetchOrganizers() {
-    const response = await fetch("http://127.0.0.1:8000/hackathons/organizers/");
+    const response = await fetch(`${API_URL}/hackathons/organizers/`);
     const organizers = await response.json();
     renderOrganizers(organizers);
 }
 
 async function fetchTechFocuses() {
-    const response = await fetch("http://127.0.0.1:8000/hackathons/tech_focuses/");
+    const response = await fetch(`${API_URL}/hackathons/tech_focuses/`);
     const tech_focuses = await response.json();
     renderTechFocuses(tech_focuses);
 }
@@ -122,7 +122,7 @@ async function applyFilters() {
     if (filters.tech_focuses.length === 0) delete filters.tech_focuses;
     if (filters.online === null) delete filters.online;
 
-    const response = await fetch('http://127.0.0.1:8000/hackathons/get-filtered/', {
+    const response = await fetch(`${API_URL}/hackathons/get-filtered/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -158,7 +158,7 @@ async function handleSearch(event) {
     const searchQuery = document.getElementById('search-input').value.trim();
 
     if (searchQuery) {
-        const response = await fetch('http://127.0.0.1:8000/hackathons/get-filtered/', {
+        const response = await fetch(`${API_URL}/hackathons/get-filtered/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -169,7 +169,7 @@ async function handleSearch(event) {
         const data = await response.json();
         renderHackathons(data); 
     } else {
-        const response = await fetch('http://127.0.0.1:8000/hackathons/hackathons/', {
+        const response = await fetch(`${API_URL}/hackathons/hackathons/`, {
             method: 'GET',
         });
 

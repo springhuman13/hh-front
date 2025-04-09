@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
     <title>Команды</title>
 </head>
 <body>
@@ -11,7 +13,7 @@
         <div class="logo"><span>HA</span>HACKATHON</div>
         <div class="menu">
             <div class="inactive">
-                <a href="hackathons.html">Хакатоны</a>
+                <a href="index.html">Хакатоны</a>
                 <div></div>
             </div>
             <div class="inactive">
@@ -30,7 +32,16 @@
     <div class="content">
         <div class="log-in">
             <p>Вход</p>
-            <a class="btn-log-in" href="profile-reg.html"><img src="img/tg.svg">Войти через Telegram</a>
+            <script async src="https://telegram.org/js/telegram-widget.js?7"
+                data-telegram-login="hahackathon_bot" 
+                data-size="large"
+                data-userpic="false"
+                data-radius="10"
+                data-request-access="write"
+                data-userpic="false"
+                data-onauth="onTelegramAuth(user)"
+                data-lang="ru">
+            </script>
         </div>
     </div>
 </body>

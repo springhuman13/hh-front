@@ -32,14 +32,14 @@
     <div class="content">
         <div class="profile-info">
             <div class="profile-info-left">
-                <div class="profile-name">Анастасия Смирнова</div>
+                <div class="profile-name">Unknown</div>
                 <div class="profile-role">
                     <label for="role">Роль</label>
                     <select id="roles-select" name="roles-select">
                     </select>
                 </div>
-                <textarea name="profile-about-you" class="profile-about-you" placeholder="О себе"></textarea>
-                <button class="profile-save-btn">Сохранить</button>
+                <textarea name="profile-about-you" id="profile-about-you" class="profile-about-you" placeholder="О себе"></textarea>
+                <button class="profile-save-btn" id="profile-save-btn">Сохранить</button>
                 <div class="profile-intersting">
                     <div class="profile-intersting-title">
                         <p>Интересы</p>
@@ -69,16 +69,11 @@
                         <img src="img/github.svg">
                         <button onclick="ChangeGit()"><img src="img/plus-square.svg"></button>
                     </div>
-                    <div class="git-content">
-                        <p><strong>Name:</strong>Anastasia Smirnova</p>
-                        <p><strong>Username:</strong>springhuman</p>
-                        <p><strong>Public Repositories:</strong>HaHackathons</p>
-                        <p><strong>Followers:</strong> 1213</p>
-                        <p><strong>Following:</strong> 412</p>
+                    <div id="git-content" class="git-content">
                     </div>
                     <div class="git-form" id="git-form">
                         <p>Укажите свой git</p>
-                        <input type="text" placeholder="" name="search" id="search-input">
+                        <input type="text" placeholder="" name="git_link" id="git_link">
                         <div class="git-btn">
                             <button class="git-save-btn" onclick="SaveGit()">Сохранить</button>
                             <button class="git-close-btn" onclick="CloseGit()">Отмена</button>

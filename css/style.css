@@ -970,3 +970,44 @@ header .circles .profile img {
   color: #FFFBFF;
   background-color: #E1711D;
 }
+.content .form-checklist {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #FFFBFF;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #48464A;
+  border: 1px solid #C9C5C9;
+  height: 50vh;
+}
+.content .form-checklist details {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.content .form-checklist details input[type=text] {
+  width: 30px;
+  margin-right: 10px;
+}
+.content .form-checklist details p {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.content .form-checklist details input[type=checkbox] {
+  width: 12px;
+  height: 12px;
+  accent-color: #E1711D;
+  cursor: pointer;
+}

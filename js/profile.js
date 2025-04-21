@@ -1,135 +1,172 @@
-//  ##ROLES##
+// === CONSTANTS ===
+const token = localStorage.getItem("token");
 
+// === UTILS ===
+function getElement(id) {
+    return document.getElementById(id);
+}
+
+function showElement(el) {
+    el.style.display = 'block';
+}
+
+function hideElement(el) {
+    el.style.display = 'none';
+}
+
+function toggleFormDisplay(id, show = true) {
+    const form = getElement(id);
+    show ? showElement(form) : hideElement(form);
+}
+
+async function fetchWithAuth(url, method = 'GET', body = null) {
+    const options = {
+        method,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    };
+
+    if (body) {
+        options.headers['Content-Type'] = 'application/json';
+        options.body = JSON.stringify(body);
+    }
+
+    const res = await fetch(url, options);
+    if (!res.ok) throw new Error('Request failed');
+    return await res.json();
+}
+
+// === ROLES ===
 async function fetchRoles() {
     const response = await fetch(`${API_URL}/roles/get_all/`);
     const roles = await response.json();
     renderRoles(roles);
+
+    if (!token) throw new Error('Token not found');
+
+    const user = await fetchWithAuth(`${API_URL}/profile/me`);
+    getElement("roles-select").value = user.profile.role_id;
 }
 
-function renderRoles(roles){
-    const container = document.getElementById("roles-select");
+function renderRoles(roles) {
+    const container = getElement("roles-select");
     container.innerHTML = "";
-    roles.forEach((roles) => {
-        
-        const {
-            id = 0,
-            name = "Без названия",
-        } = roles;
-
+    roles.forEach(({ id = 0, name = "Без названия" }) => {
         const option = document.createElement("option");
-        
-        label.innerHTML = `
-                <option value="${id}">${name}</option>
-            `;
+        option.value = id;
+        option.textContent = name;
         container.appendChild(option);
     });
 }
 
-document.addEventListener("DOMContentLoaded", fetchRoles);
-//  ##INTERSTING##
+// === PROFILE ===
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadProfile();
+    fetchRoles();
 
+    const roleSelect = getElement("roles-select");
+    const aboutTextarea = getElement("profile-about-you");
+    const saveBtn = getElement("profile-save-btn");
 
+    const showSaveBtn = () => showElement(saveBtn);
+    roleSelect.addEventListener("change", showSaveBtn);
+    aboutTextarea.addEventListener("input", showSaveBtn);
+
+    saveBtn.addEventListener("click", async () => {
+        const role_id = roleSelect.value;
+        const bio = aboutTextarea.value;
+
+        try {
+            await fetchWithAuth(`${API_URL}/profile/update_profile`, "POST", { role_id, bio });
+            alert("Профиль обновлен!");
+            hideElement(saveBtn);
+        } catch (err) {
+            console.error(err);
+            alert("Ошибка при обновлении профиля.");
+        }
+    });
+});
+
+//  === загрузка профиля ===
+async function loadProfile() {
+    try {
+        if (!token) throw new Error('Token not found');
+
+        const user = await fetchWithAuth(`${API_URL}/profile/me`);
+        const profile = user.profile;
+
+        getElement("profile-about-you").value = profile.bio;
+        document.querySelector('.profile-name').textContent = `${profile.first_name} ${profile.last_name || ''}`.trim();
+        document.querySelector('.profile-img').src = profile.photo_url || 'img/profile_photo.jpeg';
+
+        const git = await fetchWithAuth(`${API_URL}/profile/get_git`);
+        const git_container = getElement('git-content');
+
+        console.log(git)
+
+        git_container.innerHTML = `
+            <p><strong>Username:</strong><a href="https://github.com/${git.username}">${git.username}</a></p>
+            <p><strong>Repositories:</strong> ${git.public_repos}</p>
+            <p><strong>Followers:</strong> ${git.followers}</p>
+            <p><strong>Following:</strong> ${git.following}</p>
+        `;
+
+    } catch (err) {
+        console.error('Ошибка при получении профиля', err);
+        // window.location.href = '/index.html'; // можно временно закомментить
+    }
+}
+
+// === INTERESTING ===
 async function fetchIntersting() {
     const response = await fetch(`${API_URL}/hackathons/tech_focuses/`);
     const intersting = await response.json();
     renderIntersting(intersting);
 }
 
-function renderIntersting(intersting){
-    const container = document.getElementById("intersting");
+function renderIntersting(intersting) {
+    const container = getElement("intersting");
     container.innerHTML = "";
-    intersting.forEach((tech_focus) => {
-        
-        const {
-            id = 0,
-            name = "Без названия",
-        } = tech_focus;
-
+    intersting.forEach(({ id = 0, name = "Без названия" }) => {
         const label = document.createElement("label");
-        
-        label.innerHTML = `
-                <input type="checkbox" name="intersting" value="${id}"><abbr title="${name}">${name}</abbr>
-            `;
+        label.innerHTML = `<input type="checkbox" name="intersting" value="${id}"><abbr title="${name}">${name}</abbr>`;
         container.appendChild(label);
     });
 }
 
-function ChangeIntersting(){
-    var form = document.getElementById('profile-intersting-form');
-    form.style.display = 'flex';
+function ChangeIntersting() {
+    toggleFormDisplay('profile-intersting-form', true);
     fetchIntersting();
 }
 
-function SaveIntersting(){
-    var form = document.getElementById('profile-intersting-form');
-    form.style.display = 'none';
+function SaveIntersting() {
+    toggleFormDisplay('profile-intersting-form', false);
 }
 
-function CloseIntersting(){
-    var form = document.getElementById('profile-intersting-form');
-    form.style.display = 'none';
+function CloseIntersting() {
+    toggleFormDisplay('profile-intersting-form', false);
 }
 
-//  ##GIT##
-
-function ChangeGit(){
-    var form = document.getElementById('git-form');
-    form.style.display = 'flex';
+// === GIT ===
+function ChangeGit() {
+    toggleFormDisplay('git-form', true);
 }
 
-function SaveGit(){
-    var form = document.getElementById('git-form');
-    form.style.display = 'none';
-}
+async function SaveGit() {
 
-function CloseGit(){
-    var form = document.getElementById('git-form');
-    form.style.display = 'none';
-}
-
-
-// ##PROFILE##
-
-window.addEventListener('DOMContentLoaded', async () => {
-    await loadProfile();  // Загружаем данные пользователя
-});
-
-// Получение профиля пользователя
-async function loadProfile() {
+    const git_link = getElement('git_link').value;
     try {
-        const token = localStorage.getItem("token");  // Получаем JWT из localStorage
-
-        if (!token) {
-            throw new Error('Token not found');
-        }
-
-        const res = await fetch(`${API_URL}/profile/me`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`  // Добавляем токен в заголовок
-            }
-        });
-
-        if (!res.ok) throw new Error('Unauthorized');
-        const user = await res.json();
-
-        console.log(user)
-
-        // Вставляем имя
-        document.querySelector('.profile-name').textContent = `${user.profile.first_name} ${user.profile.last_name || ''}`.trim();
-
-        // Аватарка
-        const avatarUrl = user.profile.photo_url || 'img/profile_photo.jpeg';
-        document.querySelector('.profile-img').src = avatarUrl;
-
-        // TODO: Добавить вставку интересов, роли, GIT и т.д.
-        // Например:
-        // populateGit(user.github);
-        // populateInterests(user.interests);
-        // document.querySelector('#role').value = user.role;
-
+        await fetchWithAuth(`${API_URL}/profile/update_git`, "POST", { git_link });
+        alert("Git обновлен!");
     } catch (err) {
-        console.error('Ошибка при получении профиля', err);
-        //window.location.href = '/index.html'; // редирект, если не авторизован
+        console.error(err);
+        alert("Ошибка при обновлении Git.");
     }
+    toggleFormDisplay('git-form', false);
 }
+
+function CloseGit() {
+    toggleFormDisplay('git-form', false);
+}
+

@@ -58,6 +58,8 @@ async function loadProfile() {
         const userSkills = await fetchWithAuth(`${API_URL}/profile/get_skills`);
         renderUserSkills(userSkills);
 
+        await loadMyTeams()
+
     } catch (err) {
         console.error('Ошибка при получении профиля', err);
         window.location.href = '/auth.html';
@@ -316,5 +318,79 @@ function renderCertificate(certificates) {
             <a href="${download_url}" target="_blank" download="${original_filename}">${original_filename}</a>
         `;
         container.appendChild(ol);
+    });
+}
+
+
+//  === TEAMS ===
+async function loadMyTeams() {
+    try {
+        const response = await fetch(`${API_URL}/team/get_my_teams`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
+
+        const teams = await response.json();
+        renderTeams(teams);
+    } catch (error) {
+        console.error(error);
+        alert("Ошибка при загрузке ваших команд.");
+    }
+}
+
+function renderTeams(teams) {
+    const container = getElement("teams-container");
+    container.innerHTML = "";
+
+    if (!teams.length) {
+        container.innerHTML = `<div class="empty-message">Команды не найдены :(</div>`;
+        return;
+    }
+
+    teams.forEach(team => {
+        const teamCard = document.createElement("div");
+        teamCard.className = "teams-card";
+
+        const memberButtons = team.members.map(member => {
+            const btn = document.createElement("button");
+            const img = document.createElement("img");
+            img.title = member.role_name;
+        
+            if (member.user_id) {
+                img.src = `img/role_taken/${member.role_id}.svg`;
+            } else {
+                img.src = `img/role_free/${member.role_id}.svg`;
+                btn.onclick = () => {
+                    if (confirm("Подать заявку на вступление в команду?")) {
+                        sendApplication(member.id);
+                    }
+                };
+            }
+        
+            btn.appendChild(img);
+            return btn;
+        });        
+
+        teamCard.innerHTML = `
+            <div class="team-name">
+                <p>${team.name}</p>
+            </div>
+            <div class="team-info">
+                <p><strong>Хакатон: </strong><a href="${team.hackathon_website}" target="_blank">${team.hackathon_name}</a></p>
+                <p><strong>Город: </strong>${team.city_name}</p>
+                <p>${team.description}</p>
+            </div>
+        `;
+
+        const membersDiv = document.createElement("div");
+        membersDiv.className = "team-members";
+        memberButtons.forEach(btn => membersDiv.appendChild(btn));
+
+        teamCard.appendChild(membersDiv);
+        container.appendChild(teamCard);
     });
 }

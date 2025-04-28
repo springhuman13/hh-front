@@ -117,6 +117,19 @@ header .circles .profile img {
   border-radius: 50%;
 }
 
+.spinner {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+}
+
+.empty-message {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  color: grey;
+}
+
 .content {
   display: flex;
   flex-direction: row;
@@ -613,6 +626,7 @@ header .circles .profile img {
 .content .profile-info-left .profile-intersting, .content .profile-info-left .skills {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 5px;
 }
 .content .profile-info-left .profile-intersting-title, .content .profile-info-left .skills-title {
@@ -639,6 +653,7 @@ header .circles .profile img {
 }
 .content .profile-info-left .profile-intersting-container, .content .profile-info-left .skills-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
 }
 .content .profile-info-left .profile-intersting-item, .content .profile-info-left .skills-item {

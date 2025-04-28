@@ -22,6 +22,7 @@ function renderHackathons(hackathons) {
     hackathons.forEach((hackathon) => {
         
         const {
+            id = 0,
             name = "Без названия",
             online = false,
             website = "#",
@@ -47,7 +48,7 @@ function renderHackathons(hackathons) {
                     <p><strong>Организатор: </strong>${organizerNames}</p>
                     <p><strong>Технологический фокус: </strong>${techFocusNames}</p>
                 </div>
-                <a href="teams.html" class="btn-find-team">
+                <a href="teams.html?hackathon=${id}" class="btn-find-team">
                     <img src="img/find_team.svg" alt="Иконка команды">
                     Найти команду
                 </a>

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/config.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/profile.js"></script>
+    <script src="js/config.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script src="js/profile.js" defer></script>
     <title>Профиль</title>
 </head>
 <body>
@@ -124,24 +124,7 @@
                 <div class="my-teams-title">Мои команды</div>
                 <button class="btn-create-team"><img src="img/create_team.svg">Создать команду</button>
             </div>
-            <div class="my-teams">
-                <div class="teams-card">
-                    <div class="team-name">
-                        <p>Программистики</p>
-                    </div>
-                    <div class="team-info">
-                        <p><strong>Хакатон: </strong><a href="hackathons.html">Yandex Cup</a></p>
-                        <p><strong>Город: </strong>Санкт-Петербург</p>
-                        <p>Повседневная практика показывает, что новая модель организационной деятельности требуют от нас анализа новых предложений. Равным образом новая модель организационной деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.</p>
-                    </div>
-                    <div class="team-members">
-                        <button type="submit"><img src="img/back.svg"></button>
-                        <button type="submit"><img src="img/front.svg"></button>
-                        <button type="submit"><img src="img/designer.svg"></button>
-                        <button type="submit"><img src="img/project.svg"></button>
-                        <button type="submit"><img src="img/sa.svg"></button>
-                    </div>
-                </div>
+            <div class="my-teams" id="teams-container">
             </div>
         </div>
     </div>

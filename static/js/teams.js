@@ -4,6 +4,11 @@ const token = localStorage.getItem("token");
 // === UTILS ===
 const getElement = id => document.getElementById(id);
 
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
 // === BUTTONS ===
 function openTeamForm() {
     if (!token) {
@@ -131,7 +136,6 @@ function renderRolesCheckbox(roles) {
         container.appendChild(label);
     });
 }
-document.addEventListener("DOMContentLoaded", fetchRoles);
 
 // === CITIES ===
 async function fetchCities() {
@@ -161,7 +165,7 @@ function renderCitiesCheckbox(cities) {
         container.appendChild(label);
     });
 }
-document.addEventListener("DOMContentLoaded", fetchCities);
+
 
 // === HACKATHONS ===
 async function fetchHackathons() {
@@ -169,6 +173,13 @@ async function fetchHackathons() {
     const hackathons = await response.json();
     renderHackathonsSelect(hackathons);
     renderHackathonsCheckbox(hackathons);
+    const hackathonFromUrl = getQueryParam('hackathon');
+    if (hackathonFromUrl) {
+        const checkbox = document.querySelector(`#hackathons-checkbox input[value="${hackathonFromUrl}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    }
 }
 function renderHackathonsSelect(hackathons) {
     const container = getElement("form-hackathon-select");
@@ -191,7 +202,6 @@ function renderHackathonsCheckbox(hackathons) {
         container.appendChild(label);
     });
 }
-document.addEventListener("DOMContentLoaded", fetchHackathons);
 
 // === FORM CREATION HANDLER ===
 async function createTeam() {
@@ -246,6 +256,11 @@ async function createTeam() {
 function renderTeams(teams) {
     const container = getElement("teams-container");
     container.innerHTML = "";
+
+    if (!teams.length) {
+        container.innerHTML = `<div class="empty-message">Команды не найдены :(</div>`;
+        return;
+    }
 
     teams.forEach(team => {
         const teamCard = document.createElement("div");
@@ -356,41 +371,6 @@ async function applyTeamFilters() {
     }
 }
 
-
-async function debugLoadTeamsWithScores() {
-    try {
-        const response = await fetch(`${API_URL}/team/get_filtered`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                ...(token ? { "Authorization": `Bearer ${token}` } : {})
-            },
-            body: JSON.stringify({
-                sort: 0,
-                name: null,
-                city: [],
-                hackathon: [],
-                role: []
-            })
-        });
-        if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
-
-        const teams = await response.json();
-        console.log("Загруженные команды:");
-        console.table(teams.map(team => ({
-            name: team.name,
-            score: team.score,
-            hackathon: team.hackathon_name,
-            city: team.city_name
-        })));
-
-        renderTeams(teams);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-
 // === SEND APPLICATION ===
 async function sendApplication(teamMemberId) {
     try {
@@ -417,7 +397,13 @@ async function sendApplication(teamMemberId) {
 
 
 // === EVENT LISTENERS ===
-document.addEventListener("DOMContentLoaded", loadTeams);
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetchCities();
+    await fetchRoles();
+    await fetchHackathons();
+    applyTeamFilters();
+});
+
 document.querySelector('.filter-section').addEventListener('change', event => {
     if (event.target.matches('.filter-content input, #sort-select')) {
         applyTeamFilters();

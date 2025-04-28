@@ -146,9 +146,9 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-top: 25px;
+    padding-top: 20px;
     gap: 40px;
-    height: 80vh;
+    height: 84vh;
 
     .popup {
         @include text(clamp(20px, 2vw, 24px), 500, $dark_color);
@@ -250,7 +250,6 @@ header {
         flex-direction: column;
         gap: 10px;
         width: 300px;
-        max-height: 800px;
 
         .search-hackathon {
             display: flex;
@@ -493,7 +492,7 @@ header {
     .profile-info {
         display: flex;
         justify-content: space-between;
-        height: 80vh;
+        height: 84vh;
         width: 900px;
         background-color: $light_color;
         border-radius: 20px;

@@ -135,9 +135,9 @@ header .circles .profile img {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-top: 25px;
+  padding-top: 20px;
   gap: 40px;
-  height: 80vh;
+  height: 84vh;
 }
 .content .popup {
   font-family: "Inter", serif;
@@ -246,7 +246,6 @@ header .circles .profile img {
   flex-direction: column;
   gap: 10px;
   width: 300px;
-  max-height: 800px;
 }
 .content .left-menu .search-hackathon {
   display: flex;
@@ -491,7 +490,7 @@ header .circles .profile img {
 .content .profile-info {
   display: flex;
   justify-content: space-between;
-  height: 80vh;
+  height: 84vh;
   width: 900px;
   background-color: #FFFBFF;
   border-radius: 20px;

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/config.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/view_profile.js"></script>
+    <title>Профиль</title>
+</head>
+<body>
+    <header>
+        <div class="logo"><span>HA</span>HACKATHON</div>
+        <div class="menu">
+            <div class="inactive">
+                <a href="index.html">Хакатоны</a>
+                <div></div>
+            </div>
+            <div class="inactive">
+                <a href="teams.html">Команды</a>
+                <div></div>
+            </div>
+        </div>
+        <div class="circles">
+            <button class="notification">
+                <div class="icon"><img src="svg/inbox.svg"></div>
+                <div class="count" id="notification-count"></div>
+            </button>
+            <a class="profile" href="auth.html" id="profile-link"><img src="img/log_in.png" id="profile-avatar"></a>
+        </div>
+    </header>
+    <div class="content">
+        <div id="notifications-popup" class="popup">
+            <div class="popup-title">Уведомления</div>
+            <div id="notifications-container" class="notifications-container">
+            </div>
+        </div>
+        <div id="notification-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <p id="modal-title"></p>
+                <p id="modal-text"></p>
+            </div>
+        </div>
+        <div class="profile-info">
+            <div class="profile-info-left">
+                <div class="profile-name">Unknown</div>
+                <div class="view-profile-role">
+                    <div><b>Роль   </b><span id="role"></span></div>
+                </div>
+                <div id="profile-about-you" class="profile-about-you"></div>
+                <div class="profile-intersting">
+                    <div class="profile-intersting-title">
+                        <p>Интересы</p>
+                    </div>
+                    <div class="profile-intersting-container">
+                    </div>
+                </div>
+                <div class="skills">
+                    <div class="skills-title ">
+                        <p>Навыки</p>
+                    </div>
+                    <div class="skills-container">
+                    </div>
+                </div>
+            </div>
+            <div class="profile-info-right">
+                <img class='profile-img' src="img/profile_photo.jpeg">
+                <div class="profile-git">
+                    <div class="git-title">
+                        <p>Git</p>
+                        <img src="img/github.svg">
+                    </div>
+                    <div id="git-content" class="git-content">
+                    </div>
+                </div>
+                <div class="profile-docs">
+                    <form id="upload-form" enctype="multipart/form-data">
+                        <p>Сертификаты</p>
+                        <div class="file-upload">
+                            <input type="file" name="certificateFile" id="certificateFile" accept=".pdf,.doc,.docx">
+                        </div>
+                    </form>
+                    <ul id="certificate-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -25,12 +25,24 @@
         <div class="circles">
             <button class="notification">
                 <div class="icon"><img src="svg/inbox.svg"></div>
-                <div class="count">99</div>
+                <div class="count" id="notification-count"></div>
             </button>
             <a class="profile" href="auth.html" id="profile-link"><img src="img/log_in.png" id="profile-avatar"></a>
         </div>
     </header>
     <div class="content">
+        <div id="notifications-popup" class="popup">
+            <div class="popup-title">Уведомления</div>
+            <div id="notifications-container" class="notifications-container">
+            </div>
+        </div>
+        <div id="notification-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <p id="modal-title"></p>
+                <p id="modal-text"></p>
+            </div>
+        </div>
         <div class="profile-info">
             <div class="profile-info-left">
                 <div class="profile-name">Unknown</div>
@@ -113,40 +125,6 @@
                 <button class="btn-create-team"><img src="img/create_team.svg">Создать команду</button>
             </div>
             <div class="my-teams">
-                <div class="teams-card">
-                    <div class="team-name">
-                        <p>Программистики</p>
-                    </div>
-                    <div class="team-info">
-                        <p><strong>Хакатон: </strong><a href="hackathons.html">Yandex Cup</a></p>
-                        <p><strong>Город: </strong>Санкт-Петербург</p>
-                        <p>Повседневная практика показывает, что новая модель организационной деятельности требуют от нас анализа новых предложений. Равным образом новая модель организационной деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.</p>
-                    </div>
-                    <div class="team-members">
-                        <button type="submit"><img src="img/back.svg"></button>
-                        <button type="submit"><img src="img/front.svg"></button>
-                        <button type="submit"><img src="img/designer.svg"></button>
-                        <button type="submit"><img src="img/project.svg"></button>
-                        <button type="submit"><img src="img/sa.svg"></button>
-                    </div>
-                </div>
-                <div class="teams-card">
-                    <div class="team-name">
-                        <p>Программистики</p>
-                    </div>
-                    <div class="team-info">
-                        <p><strong>Хакатон: </strong><a href="hackathons.html">Yandex Cup</a></p>
-                        <p><strong>Город: </strong>Санкт-Петербург</p>
-                        <p>Повседневная практика показывает, что новая модель организационной деятельности требуют от нас анализа новых предложений. Равным образом новая модель организационной деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.</p>
-                    </div>
-                    <div class="team-members">
-                        <button type="submit"><img src="img/back.svg"></button>
-                        <button type="submit"><img src="img/front.svg"></button>
-                        <button type="submit"><img src="img/designer.svg"></button>
-                        <button type="submit"><img src="img/project.svg"></button>
-                        <button type="submit"><img src="img/sa.svg"></button>
-                    </div>
-                </div>
                 <div class="teams-card">
                     <div class="team-name">
                         <p>Программистики</p>

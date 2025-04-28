@@ -23,14 +23,26 @@
             </div>
         </div>
         <div class="circles">
-            <button class="notification">
+            <button id="notification" class="notification">
                 <div class="icon"><img src="svg/inbox.svg"></div>
-                <div class="count">99</div>
+                <div id="notification-count" class="count"></div>
             </button>
             <a class="profile" href="auth.html" id="profile-link"><img src="img/log_in.png" id="profile-avatar"></a>
         </div>
     </header>
     <div class="content">
+        <div id="notifications-popup" class="popup">
+            <div class="popup-title">Уведомления</div>
+            <div id="notifications-container" class="notifications-container">
+            </div>
+        </div>
+        <div id="notification-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <p id="modal-title"></p>
+                <p id="modal-text"></p>
+            </div>
+        </div>
         <div class="left-menu">
             <div class="search-hackathon">
                 <form>

@@ -129,7 +129,6 @@ header {
     }
 }
 
-
 .content {
     display: flex;
     flex-direction: row;
@@ -137,6 +136,98 @@ header {
     padding-top: 25px;
     gap: 40px;
     height: 80vh;
+
+    .popup {
+        @include text(clamp(20px, 2vw, 24px), 500, $dark_color);
+        position: absolute;
+        z-index: 9999;
+        right: 0px;
+        top: 0px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        display: none;
+        width: 500px;
+        height: 100vh;
+        .popup-title{
+            padding: 20px;
+            text-align: center;
+        }
+    }
+    .popup.show {
+        display: block;
+    }
+    .notification-item{
+            @include text(clamp(14px, 2vw, 18px), 300, $dark_color);
+            padding: 30px;
+            border-top: 1px solid $light_dark_color;
+            border-bottom: 1px solid $light_dark_color;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            img{
+                width: 40px;
+            }
+    } 
+
+    .modal {
+        @include text(clamp(14px, 2vw, 18px), 300, $dark_color);
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .close-modal {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .notif-actions{
+        padding-top: 20px;
+    }
+
+    p#modal-title{
+        padding-bottom: 10px;
+        @include text(clamp(14px, 2vw, 18px), 500, $dark_color);
+    }
+
+    .accept-btn-modal{
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        padding: 7px 14px;
+        @include text(clamp(12px, 2vw, 16px), 500, $light_color);
+        background-color: $main_color;
+
+    }
+    .decline-btn-modal{
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        padding: 7px 14px;
+        @include text(clamp(12px, 2vw, 16px), 500, $dark_color);
+        background-color: $light_dark_color
+    }
+    
 
     //Хакатоны
 
@@ -463,6 +554,10 @@ header {
         flex-direction: column;
         gap: 20px;
         width: 400px;
+
+        .view-profile-role{
+            @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
+        }
 
         .profile-name {
             @include text(clamp(20px, 2vw, 24px), 500, $dark_color);

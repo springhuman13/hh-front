@@ -1,7 +1,9 @@
 // === CONSTANTS ===
 const token = localStorage.getItem("token");
+
 // === UTILS ===
 const getElement = id => document.getElementById(id);
+
 // === BUTTONS ===
 function openTeamForm() {
     if (!token) {
@@ -25,7 +27,6 @@ function closeTeamForm() {
 }
 document.getElementById("create-team-btn").addEventListener("click", createTeam);
 
-
 // === FORM CHECKLIST ===
 const checklistDataByRole = {};
 function openCLForm(id) {
@@ -33,9 +34,7 @@ function openCLForm(id) {
     form.style.display = 'flex';
     role = getElement(id).value
 
-    setTimeout(() => {
-        fetchCL();
-    }, 0);
+    setTimeout(() => fetchCL(), 0);
 
     async function fetchCL() {
         const response = await fetch(`${API_URL}/roles/get_checklist_for_role/${role}`);
@@ -49,29 +48,26 @@ function openCLForm(id) {
         checklistDataByRole[id] = [];
     
         cls.forEach((cl) => {
-            const { checklist_id = 0, name = false, points = [] } = cl;
-    
+            const { checklist_id = 0, name = "", points = [] } = cl;
             const details = document.createElement("details");
             container.appendChild(details);
-    
+
             const summary = document.createElement("summary");
             summary.textContent = name;
             details.appendChild(summary);
             
             points.forEach((point) => {
                 const { id: pointId = 0, description = "Без названия" } = point;
-    
                 const p = document.createElement("p");
                 p.innerHTML = `
                     <input type="number" min="1" max="5" step="1" value="1" data-weight-checklist-id="${pointId}">
                     <label><input type="checkbox" data-checklist-id="${pointId}">${description}</label>
                 `;
                 details.appendChild(p);
-    
-                // Добавим событие на изменение — обновим данные в checklistDataByRole
+
                 const weightInput = p.querySelector(`[data-weight-checklist-id="${pointId}"]`);
                 const checkbox = p.querySelector(`[data-checklist-id="${pointId}"]`);
-    
+
                 const updateData = () => {
                     const existing = checklistDataByRole[id].find(item => item.checklist_point_id === pointId);
                     if (checkbox.checked) {
@@ -83,13 +79,11 @@ function openCLForm(id) {
                         } else {
                             existing.weight = parseInt(weightInput.value);
                         }
-                    } else {
-                        if (existing) {
-                            checklistDataByRole[id] = checklistDataByRole[id].filter(item => item.checklist_point_id !== pointId);
-                        }
+                    } else if (existing) {
+                        checklistDataByRole[id] = checklistDataByRole[id].filter(item => item.checklist_point_id !== pointId);
                     }
                 };
-    
+
                 checkbox.addEventListener('change', updateData);
                 weightInput.addEventListener('change', updateData);
             });
@@ -97,14 +91,11 @@ function openCLForm(id) {
     }
 }
 function closeCLForm() {
-    var form = document.getElementById('form-checklist');
-    form.style.display = 'none';
+    document.getElementById('form-checklist').style.display = 'none';
 }
 function createCLForm() {
-    var form = document.getElementById('form-checklist');
-    form.style.display = 'none';
+    document.getElementById('form-checklist').style.display = 'none';
 }
-
 
 // === ROLES ===
 async function fetchRoles() {
@@ -115,7 +106,7 @@ async function fetchRoles() {
 }
 function renderRolesSelect(roles) {
     const containers = document.getElementsByClassName("form-roles-select");
-    Array.from(containers).forEach((container) =>{
+    Array.from(containers).forEach((container) => {
         container.innerHTML = "";
         const free = document.createElement("option");
         free.value = 0;
@@ -127,27 +118,19 @@ function renderRolesSelect(roles) {
             option.textContent = name;
             container.appendChild(option);
         });
-    })
+    });
 }
-function renderRolesCheckbox(roles){
+function renderRolesCheckbox(roles) {
     const container = getElement("roles-checkbox");
     container.innerHTML = "";
-    roles.forEach((role) => {
-        
-        const {
-            id = 0,
-            name = "Без названия",
-        } = role;
-
+    roles.forEach(({ id = 0, name = "Без названия" }) => {
         const label = document.createElement("label");
-        
         label.innerHTML = `
-                <input type="checkbox" name="roles" value="${id}"><abbr title="${name}">${name}</abbr>
-            `;
+            <input type="checkbox" name="roles" value="${id}"><abbr title="${name}">${name}</abbr>
+        `;
         container.appendChild(label);
     });
 }
-
 document.addEventListener("DOMContentLoaded", fetchRoles);
 
 // === CITIES ===
@@ -167,21 +150,14 @@ function renderCitiesSelect(cities) {
         container.appendChild(option);
     });
 }
-function renderCitiesCheckbox(cities){
+function renderCitiesCheckbox(cities) {
     const container = getElement("cities-checkbox");
     container.innerHTML = "";
-    cities.forEach((city) => {
-        
-        const {
-            id = 0,
-            name = "Без названия",
-        } = city;
-
+    cities.forEach(({ id = 0, name = "Без названия" }) => {
         const label = document.createElement("label");
-        
         label.innerHTML = `
-                <input type="checkbox" name="cities" value="${id}"><abbr title="${name}">${name}</abbr>
-            `;
+            <input type="checkbox" name="cities" value="${id}"><abbr title="${name}">${name}</abbr>
+        `;
         container.appendChild(label);
     });
 }
@@ -204,26 +180,18 @@ function renderHackathonsSelect(hackathons) {
         container.appendChild(option);
     });
 }
-function renderHackathonsCheckbox(hackathons){
+function renderHackathonsCheckbox(hackathons) {
     const container = getElement("hackathons-checkbox");
     container.innerHTML = "";
-    hackathons.forEach((hackathon) => {
-        
-        const {
-            id = 0,
-            name = "Без названия",
-        } = hackathon;
-
+    hackathons.forEach(({ id = 0, name = "Без названия" }) => {
         const label = document.createElement("label");
-        
         label.innerHTML = `
-                <input type="checkbox" name="hackathons" value="${id}"><abbr title="${name}">${name}</abbr>
-            `;
+            <input type="checkbox" name="hackathons" value="${id}"><abbr title="${name}">${name}</abbr>
+        `;
         container.appendChild(label);
     });
 }
 document.addEventListener("DOMContentLoaded", fetchHackathons);
-
 
 // === FORM CREATION HANDLER ===
 async function createTeam() {
@@ -231,15 +199,14 @@ async function createTeam() {
     const hackathonId = getElement("form-hackathon-select").value;
     const cityId = getElement("form-city-select").value;
     const description = getElement("form-description").value;
-    
+
     const roles = [];
     const roleElements = document.querySelectorAll(".form-roles-select");
 
     roleElements.forEach((selectEl) => {
         const selectId = selectEl.id;
         const roleId = parseInt(selectEl.value);
-
-        if (!roleId) return; // пропускаем, если роль не выбрана
+        if (!roleId) return;
 
         const checklist = checklistDataByRole[selectId] || [];
         roles.push({
@@ -248,13 +215,7 @@ async function createTeam() {
         });
     });
 
-    const payload = {
-        name,
-        hackathon_id: hackathonId,
-        city_id: cityId,
-        description,
-        roles
-    };
+    const payload = { name, hackathon_id: hackathonId, city_id: cityId, description, roles };
 
     try {
         const response = await fetch(`${API_URL}/team/create_team`, {
@@ -274,8 +235,7 @@ async function createTeam() {
 
         const result = await response.json();
         alert("Команда успешно создана!");
-        var form = document.getElementById('form-create-team');
-        form.style.display = 'none';
+        document.getElementById('form-create-team').style.display = 'none';
     } catch (error) {
         console.error("Ошибка:", error);
         alert("Произошла ошибка при создании команды.");
@@ -295,28 +255,28 @@ function renderTeams(teams) {
             const btn = document.createElement("button");
             const img = document.createElement("img");
             img.title = member.role_name;
-
+        
             if (member.user_id) {
                 img.src = `img/role_taken/${member.role_id}.svg`;
             } else {
                 img.src = `img/role_free/${member.role_id}.svg`;
                 btn.onclick = () => {
                     if (confirm("Подать заявку на вступление в команду?")) {
-                        sendApplication(team.id, member.role_id);
+                        sendApplication(member.id);
                     }
                 };
             }
-
+        
             btn.appendChild(img);
             return btn;
-        });
+        });        
 
         teamCard.innerHTML = `
             <div class="team-name">
                 <p>${team.name}</p>
             </div>
             <div class="team-info">
-                <p><strong>Хакатон: </strong><a href="${team.hackathon_website}">${team.hackathon_name}</a></p>
+                <p><strong>Хакатон: </strong><a href="${team.hackathon_website}" target="_blank">${team.hackathon_name}</a></p>
                 <p><strong>Город: </strong>${team.city_name}</p>
                 <p>${team.description}</p>
             </div>
@@ -331,10 +291,23 @@ function renderTeams(teams) {
     });
 }
 
-// === LOAD ALL TEAMS ===
+// === LOAD TEAMS INITIALLY ===
 async function loadTeams() {
     try {
-        const response = await fetch(`${API_URL}/team/get_all`);
+        const response = await fetch(`${API_URL}/team/get_filtered`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                ...(token ? { "Authorization": `Bearer ${token}` } : {})
+            },
+            body: JSON.stringify({
+                sort: 1,
+                name: null,
+                city: [],
+                hackathon: [],
+                role: []
+            })
+        });
         if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
         const teams = await response.json();
         renderTeams(teams);
@@ -354,21 +327,23 @@ async function applyTeamFilters() {
     };
 
     const searchInput = document.querySelector('.search-hackathon input[name="search"]');
-    if (searchInput.value.trim()) filters.name = searchInput.value.trim();
+    if (searchInput.value.trim()) {
+        filters.name = searchInput.value.trim();
+    }
 
-    document.querySelectorAll('#cities-checkbox input:checked').forEach(cb => filters.city.push(cb.value));
-    document.querySelectorAll('#hackathons-checkbox input:checked').forEach(cb => filters.hackathon.push(cb.value));
+    document.querySelectorAll('#cities-checkbox input:checked').forEach(cb => filters.city.push(Number(cb.value)));
+    document.querySelectorAll('#hackathons-checkbox input:checked').forEach(cb => filters.hackathon.push(Number(cb.value)));
     document.querySelectorAll('#roles-checkbox input:checked').forEach(cb => filters.role.push(Number(cb.value)));
 
-    if (!filters.city.length) delete filters.city;
-    if (!filters.hackathon.length) delete filters.hackathon;
-    if (!filters.role.length) delete filters.role;
     if (!filters.name) delete filters.name;
 
     try {
         const response = await fetch(`${API_URL}/team/get_filtered`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                "Content-Type": "application/json",
+                ...(token ? { "Authorization": `Bearer ${token}` } : {})
+            },
             body: JSON.stringify(filters)
         });
 
@@ -381,8 +356,43 @@ async function applyTeamFilters() {
     }
 }
 
+
+async function debugLoadTeamsWithScores() {
+    try {
+        const response = await fetch(`${API_URL}/team/get_filtered`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                ...(token ? { "Authorization": `Bearer ${token}` } : {})
+            },
+            body: JSON.stringify({
+                sort: 0,
+                name: null,
+                city: [],
+                hackathon: [],
+                role: []
+            })
+        });
+        if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
+
+        const teams = await response.json();
+        console.log("Загруженные команды:");
+        console.table(teams.map(team => ({
+            name: team.name,
+            score: team.score,
+            hackathon: team.hackathon_name,
+            city: team.city_name
+        })));
+
+        renderTeams(teams);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
 // === SEND APPLICATION ===
-async function sendApplication(teamId, roleId) {
+async function sendApplication(teamMemberId) {
     try {
         const response = await fetch(`${API_URL}/application/submit`, {
             method: 'POST',
@@ -390,19 +400,21 @@ async function sendApplication(teamId, roleId) {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ team_id: teamId, role_id: roleId })
+            body: JSON.stringify({ team_member_id: teamMemberId })
         });
 
         if (response.ok) {
             alert("Заявка отправлена!");
         } else {
-            alert("Ошибка при отправке заявки.");
+            const error = await response.json();
+            alert("Ошибка при отправке заявки: " + error.error);
         }
     } catch (error) {
         console.error(error);
         alert("Ошибка сети.");
     }
 }
+
 
 // === EVENT LISTENERS ===
 document.addEventListener("DOMContentLoaded", loadTeams);

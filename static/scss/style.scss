@@ -219,7 +219,7 @@ header {
         padding-top: 20px;
     }
 
-    p#modal-title{
+    .modal-title{
         padding-bottom: 10px;
         @include text(clamp(14px, 2vw, 18px), 500, $dark_color);
     }

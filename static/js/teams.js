@@ -274,7 +274,9 @@ function renderTeams(teams) {
             if (member.user_id) {
                 img.src = `img/role_taken/${member.role_id}.svg`;
                 btn.onclick = () => {
-                    alert("Роль занята");
+                    if (confirm("Роль занята. Перейти в профиль участника?" )){
+                        window.open(`https://hahackathon.ru.tuna.am/view_profile.html?id=${member.user_id}`, '_blank');
+                    }
                 };
             } else {
                 img.src = `img/role_free/${member.role_id}.svg`;

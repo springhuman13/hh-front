@@ -212,7 +212,7 @@ header .circles .profile img {
 .content .notif-actions {
   padding-top: 20px;
 }
-.content p#modal-title {
+.content .modal-title {
   padding-bottom: 10px;
   font-family: "Inter", serif;
   font-weight: 500;

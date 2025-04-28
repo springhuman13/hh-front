@@ -374,6 +374,7 @@ function renderTeams(teams) {
         
             if (member.user_id) {
                 img.src = `img/role_taken/${member.role_id}.svg`;
+                btn.onclick = () => {openTMModal(member)};
             } else {
                 img.src = `img/role_free/${member.role_id}.svg`;
                 btn.onclick = () => {
@@ -406,3 +407,31 @@ function renderTeams(teams) {
         container.appendChild(teamCard);
     });
 }
+
+function openTMModal(member) {
+    const modal = getElement("tm-modal");
+    const modalTitle = getElement("tm-modal-title");
+    const modalText = getElement("tm-modal-text");
+
+    modalTitle.textContent = "";
+    modalText.innerHTML = "";
+
+    const name = extractTelegramUsername(member.user_tg);
+    modalTitle.textContent = member.role_name;
+    modalText.innerHTML = `
+        <p><a href="https://hahackathon.ru.tuna.am/view_profile.html?id=${member.user_id}" target="_blank">Профиль</a></p>
+        <p>Контакты: <a href="${member.user_tg}" target="_blank">@${name}</a></p>
+    `;
+    modal.style.display = "block";
+}
+
+document.querySelector(".close-modal").addEventListener("click", () => {
+    getElement("tm-modal").style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+    const modal = getElement("tm-modal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});

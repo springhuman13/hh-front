@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/config.js"></script>
+    <script src="js/header.js"></script>
     <script src="js/profile.js"></script>
     <title>Профиль</title>
 </head>
@@ -26,7 +27,7 @@
                 <div class="icon"><img src="svg/inbox.svg"></div>
                 <div class="count">99</div>
             </button>
-            <a class="profile" href="profile.html"><img src="img/profile_photo.jpeg"></a>
+            <a class="profile" href="auth.html" id="profile-link"><img src="img/log_in.png" id="profile-avatar"></a>
         </div>
     </header>
     <div class="content">
@@ -46,8 +47,6 @@
                         <button onclick="ChangeIntersting()"><img src="img/plus-square.svg"></button>
                     </div>
                     <div class="profile-intersting-container">
-                        <div class="profile-intersting-item">AI</div>
-                        <div class="profile-intersting-item">ML</div>
                     </div>
                 </div>
                 <div class="profile-intersting-form" id="profile-intersting-form">
@@ -59,7 +58,22 @@
                         <button class="profile-intersting-close-btn" onclick="CloseIntersting()">Отмена</button>
                     </div>
                 </div>
-                <div class="skills"></div>
+                <div class="skills">
+                    <div class="skills-title">
+                        <p>Навыки</p>
+                        <button onclick="ChangeSkills()"><img src="img/plus-square.svg"></button>
+                    </div>
+                    <div class="skills-container">
+                    </div>
+                    <div class="form-checklist" id="form-checklist">
+                        <div id="form-checklist-details" class="form-checklist-details">
+                        </div>
+                        <div class="form-cl-buttons">
+                            <button class="form-cl-create-button" onclick="createCLForm()">Сохранить</button>
+                            <button class="form-cl-close-button" onclick="closeCLForm()">Отмена</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="profile-info-right">
                 <img class='profile-img' src="img/profile_photo.jpeg">
@@ -81,16 +95,14 @@
                     </div>
                 </div>
                 <div class="profile-docs">
-                    <form action="/upload" method="post" enctype="multipart/form-data">
+                    <form id="upload-form" enctype="multipart/form-data">
                         <p>Сертификаты</p>
                         <div class="file-upload">
-                            <img src="img/plus-square.svg">
+                            <img src="img/plus-square.svg" onclick="document.getElementById('certificateFile').click()">
                             <input type="file" name="certificateFile" id="certificateFile" accept=".pdf,.doc,.docx">
                         </div>
                     </form>
-                    <ul>
-                        <ol><a href="ИСТ-113_Смирнова_АЕ5.pdf" target="_blank">certificate1.pdf</a></ol>
-                        <ol><a href="ИСТ-113_Смирнова_АЕ5.pdf" target="_blank">certificate2.pdf</a></ol>
+                    <ul id="certificate-list">
                     </ul>
                 </div>
             </div>

@@ -509,13 +509,13 @@ header {
             display: none;
         }
 
-        .profile-intersting{
+        .profile-intersting, .skills{
             display: flex;
             flex-direction: column;
             gap: 5px;
         }
 
-        .profile-intersting-title{
+        .profile-intersting-title, .skills-title{
             display: flex;
             align-items: center;
             gap: 5px;
@@ -537,12 +537,15 @@ header {
                 justify-content: center;
             }
         }
-        .profile-intersting-container{
+        .profile-intersting-container, .skills-container{
             display: flex;
             gap: 5px;
         }
 
-        .profile-intersting-item{
+        .profile-intersting-item, .skills-item{
+            align-items: center;
+            text-align: center;
+            display: flex;
             @include text(clamp(6px, 2vw, 10px), 500, $dark_color);
             padding: 4px 8px;
             border-radius: 20px;
@@ -657,9 +660,18 @@ header {
                 padding: 10px;
                 border: $light_dark_color solid 1px;
                 background-color: white;
+                white-space: nowrap; 
+                overflow: hidden; 
+                width: 200px; 
+                text-overflow: ellipsis;
 
                 p {
                     margin: 5px;
+                    @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
+                }
+
+                a{
+                    text-decoration: none;
                     @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
                 }
             }
@@ -757,6 +769,10 @@ header {
             padding: 10px;
             border: $light_dark_color solid 1px;
             background-color: white;
+            white-space: nowrap; 
+            overflow: hidden; 
+            width: 200px; 
+            text-overflow: ellipsis;
         }
 
         p {
@@ -764,6 +780,11 @@ header {
         }
 
         ol {
+            @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
+        }
+
+        a{
+            text-decoration: none;
             @include text(clamp(8px, 2vw, 12px), 500, $dark_color);
         }
     }
@@ -860,15 +881,23 @@ header {
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     }
 
+    .form-create-team.show {
+        display: flex;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
     .form-create-team {
         display: none;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+        transition: opacity 0.3s ease, transform 0.3s ease;
         flex-direction: column;
         gap: 20px;
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 700px;
+        width: 800px;
         background-color: $light_color;
         padding: 20px;
         border-radius: 20px;
@@ -877,6 +906,7 @@ header {
         @include text(clamp(12px, 2vw, 16px), 500, $dark_color);
         text-align: center;
         border: 1px solid $light_dark_color;
+        height: 50vh;
 
         textarea {
             @include text(clamp(10px, 2vw, 14px), 500, $dark_color);
@@ -919,7 +949,7 @@ header {
         .form-team-members{
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .form-member{
@@ -987,27 +1017,56 @@ header {
         z-index: 1000;
         @include text(clamp(12px, 2vw, 16px), 500, $dark_color);
         border: 1px solid $light_dark_color;
-        height: 50vh;
-        details{
-            display: flex;
-            flex-direction: column;
-            justify-content: left;
-            input[type=text]{
-                width: 30px;
-                margin-right: 10px;
-            }
-            p{
-                display: flex;
-                gap: 2px;
-                margin-bottom: 2px;
-            }
+        height: 48vh;
+        .form-checklist-details{
+            max-height: 450px;
+            overflow-y: auto;
 
-            input[type=checkbox] {
-                width: 12px;
-                height: 12px;
-                accent-color: $main_color;
-                cursor: pointer;
+            details{
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+                input[type=number]{
+                    width: 30px;
+                    margin-right: 10px;
+                }
+                p{
+                    display: flex;
+                    gap: 2px;
+                    margin-bottom: 2px;
+                }
+    
+                input[type=checkbox] {
+                    width: 12px;
+                    height: 12px;
+                    accent-color: $main_color;
+                    cursor: pointer;
+                }
             }
+        }
+
+        button{
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            padding: 7px 14px;
+        }
+
+        .form-cl-close-button{
+            @include text(clamp(12px, 2vw, 16px), 500, $dark_color);
+            background-color: $light_dark_color
+        }
+
+        .form-cl-create-button{
+            @include text(clamp(12px, 2vw, 16px), 500, $light_color);
+            background-color: $main_color;
+        }
+
+        .form-cl-buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
         }
     }
 }

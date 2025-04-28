@@ -503,26 +503,26 @@ header .circles .profile img {
   width: 100px;
   display: none;
 }
-.content .profile-info-left .profile-intersting {
+.content .profile-info-left .profile-intersting, .content .profile-info-left .skills {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.content .profile-info-left .profile-intersting-title {
+.content .profile-info-left .profile-intersting-title, .content .profile-info-left .skills-title {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.content .profile-info-left .profile-intersting-title p {
+.content .profile-info-left .profile-intersting-title p, .content .profile-info-left .skills-title p {
   font-family: "Inter", serif;
   font-weight: 500;
   font-size: clamp(16px, 2vw, 20px);
   color: #48464A;
 }
-.content .profile-info-left .profile-intersting-title img {
+.content .profile-info-left .profile-intersting-title img, .content .profile-info-left .skills-title img {
   width: 20px;
 }
-.content .profile-info-left .profile-intersting-title button {
+.content .profile-info-left .profile-intersting-title button, .content .profile-info-left .skills-title button {
   border: none;
   background-color: #FFFBFF;
   cursor: pointer;
@@ -530,11 +530,14 @@ header .circles .profile img {
   align-items: center;
   justify-content: center;
 }
-.content .profile-info-left .profile-intersting-container {
+.content .profile-info-left .profile-intersting-container, .content .profile-info-left .skills-container {
   display: flex;
   gap: 5px;
 }
-.content .profile-info-left .profile-intersting-item {
+.content .profile-info-left .profile-intersting-item, .content .profile-info-left .skills-item {
+  align-items: center;
+  text-align: center;
+  display: flex;
   font-family: "Inter", serif;
   font-weight: 500;
   font-size: clamp(6px, 2vw, 10px);
@@ -652,9 +655,20 @@ header .circles .profile img {
   padding: 10px;
   border: #C9C5C9 solid 1px;
   background-color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 .content .profile-info-right .profile-git .git-content p {
   margin: 5px;
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(8px, 2vw, 12px);
+  color: #48464A;
+}
+.content .profile-info-right .profile-git .git-content a {
+  text-decoration: none;
   font-family: "Inter", serif;
   font-weight: 500;
   font-size: clamp(8px, 2vw, 12px);
@@ -753,6 +767,10 @@ header .circles .profile img {
   padding: 10px;
   border: #C9C5C9 solid 1px;
   background-color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
 }
 .content .profile-info-right p {
   font-family: "Inter", serif;
@@ -761,6 +779,13 @@ header .circles .profile img {
   color: #48464A;
 }
 .content .profile-info-right ol {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(8px, 2vw, 12px);
+  color: #48464A;
+}
+.content .profile-info-right a {
+  text-decoration: none;
   font-family: "Inter", serif;
   font-weight: 500;
   font-size: clamp(8px, 2vw, 12px);
@@ -851,15 +876,22 @@ header .circles .profile img {
   width: 20px;
   height: 20px;
 }
+.content .form-create-team.show {
+  display: flex;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
 .content .form-create-team {
   display: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   flex-direction: column;
   gap: 20px;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px;
+  width: 800px;
   background-color: #FFFBFF;
   padding: 20px;
   border-radius: 20px;
@@ -871,6 +903,7 @@ header .circles .profile img {
   color: #48464A;
   text-align: center;
   border: 1px solid #C9C5C9;
+  height: 50vh;
 }
 .content .form-create-team textarea {
   font-family: "Inter", serif;
@@ -917,7 +950,7 @@ header .circles .profile img {
 .content .form-create-team .form-team-members {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 .content .form-create-team .form-member {
   display: flex;
@@ -989,25 +1022,55 @@ header .circles .profile img {
   font-size: clamp(12px, 2vw, 16px);
   color: #48464A;
   border: 1px solid #C9C5C9;
-  height: 50vh;
+  height: 48vh;
 }
-.content .form-checklist details {
+.content .form-checklist .form-checklist-details {
+  max-height: 450px;
+  overflow-y: auto;
+}
+.content .form-checklist .form-checklist-details details {
   display: flex;
   flex-direction: column;
   justify-content: left;
 }
-.content .form-checklist details input[type=text] {
+.content .form-checklist .form-checklist-details details input[type=number] {
   width: 30px;
   margin-right: 10px;
 }
-.content .form-checklist details p {
+.content .form-checklist .form-checklist-details details p {
   display: flex;
   gap: 2px;
   margin-bottom: 2px;
 }
-.content .form-checklist details input[type=checkbox] {
+.content .form-checklist .form-checklist-details details input[type=checkbox] {
   width: 12px;
   height: 12px;
   accent-color: #E1711D;
   cursor: pointer;
+}
+.content .form-checklist button {
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 7px 14px;
+}
+.content .form-checklist .form-cl-close-button {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #48464A;
+  background-color: #C9C5C9;
+}
+.content .form-checklist .form-cl-create-button {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #FFFBFF;
+  background-color: #E1711D;
+}
+.content .form-checklist .form-cl-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

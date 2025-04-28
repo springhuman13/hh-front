@@ -131,6 +131,7 @@ header .circles .profile img {
 }
 
 .content {
+  font-family: "Inter", serif;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -152,6 +153,7 @@ header .circles .profile img {
   display: none;
   width: 500px;
   height: 100vh;
+  overflow-y: auto;
 }
 .content .popup .popup-title {
   padding: 20px;

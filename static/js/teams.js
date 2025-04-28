@@ -273,6 +273,9 @@ function renderTeams(teams) {
         
             if (member.user_id) {
                 img.src = `img/role_taken/${member.role_id}.svg`;
+                btn.onclick = () => {
+                    alert("Роль занята");
+                };
             } else {
                 img.src = `img/role_free/${member.role_id}.svg`;
                 btn.onclick = () => {
@@ -386,12 +389,25 @@ async function sendApplication(teamMemberId) {
         if (response.ok) {
             alert("Заявка отправлена!");
         } else {
-            const error = await response.json();
-            alert("Ошибка при отправке заявки: " + error.error);
+            let message = "Пожалуйста, войдите в систему";
+
+            try {
+                const errorData = await response.json();
+                if (errorData && errorData.detail) {
+                    message = errorData.detail;
+                    if (message === "Invalid credentials") {
+                        message = "Пожалуйста, войдите в систему";
+                    }
+                }
+            } catch (e) {
+                // Ошибка при парсинге ответа
+            }
+
+            alert(`Ошибка при отправке заявки: ${message}`);
         }
     } catch (error) {
-        console.error(error);
-        alert("Ошибка сети.");
+        console.error("Ошибка сети:", error);
+        alert("Ошибка сети. Пожалуйста, войдите в систему");
     }
 }
 

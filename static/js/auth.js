@@ -13,7 +13,7 @@ async function onTelegramAuth(user) {
 
         if (response.ok && data.access_token) {
             localStorage.setItem("token", data.access_token);
-            window.location.href = "profile.html"; // редирект в профиль
+            window.location.href = "profile.html";
         } else {
             alert("Ошибка авторизации");
             console.error(data);

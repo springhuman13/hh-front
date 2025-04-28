@@ -45,8 +45,13 @@ async function loadProfile() {
         document.querySelector('.profile-name').textContent = `${profile.first_name} ${profile.last_name || ''}`.trim();
         document.querySelector('.profile-img').src = profile.photo_url || 'img/profile_photo.jpeg';
 
-        const git = await fetchWithAuth(`${API_URL}/profile/get_git`);
-        renderGit(git);
+        try {
+            const git = await fetchWithAuth(`${API_URL}/profile/get_git`);
+            renderGit(git);
+        } catch (error) {
+            console.warn("GitHub профиль не найден:", error.message);
+            renderGit(null);
+        }
 
         const allInterests = await fetch(`${API_URL}/hackathons/tech_focuses/`).then(res => res.json());
         const userInterests = await fetchWithAuth(`${API_URL}/profile/get_interests`);
@@ -124,8 +129,15 @@ function renderRoles(roles) {
 // === GIT ===
 function renderGit(git) {
     const container = getElement('git-content');
+    container.innerHTML = "";
+
+    if (!git || !git.username) {
+        container.innerHTML = `<p>GitHub профиль не привязан</p>`;
+        return;
+    }
+
     container.innerHTML = `
-        <p><strong>Username:</strong><a href="https://github.com/${git.username}">${git.username}</a></p>
+        <p><strong>Username:</strong> <a href="https://github.com/${git.username}" target="_blank">${git.username}</a></p>
         <p><strong>Repositories:</strong> ${git.public_repos}</p>
         <p><strong>Followers:</strong> ${git.followers}</p>
         <p><strong>Following:</strong> ${git.following}</p>
